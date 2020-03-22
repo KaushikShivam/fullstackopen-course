@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Note from './components/Note';
+
 const notes = [
   {
     id: 1,
@@ -21,10 +23,6 @@ const notes = [
     important: true
   }
 ];
-
-const Note = ({ note }) => {
-  return <li>{note.content}</li>;
-};
 
 const App = ({ props }) => {
   return (
