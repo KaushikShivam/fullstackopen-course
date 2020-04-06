@@ -3,13 +3,13 @@ import noteService from './services/notes';
 import Note from './components/Note';
 
 import Notification from './components/Notification';
-import Footer from './components/Notification';
+import Footer from './components/Footer';
 
 const App = () => {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('a new note...');
   const [showAll, setShowAll] = useState(true);
-  const [errorMessage, setErrorMessage] = useState('some error happened...');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     noteService.getAll().then(initialNotes => {
@@ -27,6 +27,7 @@ const App = () => {
         setNotes(notes.map(note => (note.id !== id ? note : returnedNote)));
       })
       .catch(error => {
+        console.log(error);
         setErrorMessage(
           `Note '${note.content}' was already removed from server`
         );
